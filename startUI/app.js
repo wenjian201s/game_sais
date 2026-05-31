@@ -504,7 +504,7 @@ function getGameUrl() {
     mode: state.mode,
     taunt: state.taunt
   });
-  return `../index.html?${params.toString()}`;
+  return `../game.html?${params.toString()}`;
 }
 
 function loadRealGame() {
