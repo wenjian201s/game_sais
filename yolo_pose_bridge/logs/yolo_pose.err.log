@@ -1,0 +1,32 @@
+opening handshake failed
+Traceback (most recent call last):
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\asyncio\server.py", line 356, in conn_handler
+    await connection.handshake(
+    ...<3 lines>...
+    )
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\asyncio\server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\server.py", line 140, in accept
+    ) = self.process_request(request)
+        ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\server.py", line 235, in process_request
+    raise InvalidUpgrade(
+        "Connection", ", ".join(connection) if connection else None
+    )
+websockets.exceptions.InvalidUpgrade: invalid Connection header: keep-alive
+opening handshake failed
+Traceback (most recent call last):
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\asyncio\server.py", line 356, in conn_handler
+    await connection.handshake(
+    ...<3 lines>...
+    )
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\asyncio\server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\server.py", line 140, in accept
+    ) = self.process_request(request)
+        ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\game_sai_yolo_env\.venv_yolo\Lib\site-packages\websockets\server.py", line 235, in process_request
+    raise InvalidUpgrade(
+        "Connection", ", ".join(connection) if connection else None
+    )
+websockets.exceptions.InvalidUpgrade: invalid Connection header: keep-alive

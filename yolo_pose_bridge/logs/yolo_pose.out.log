@@ -1,0 +1,4 @@
+[warn] Python is 3.14. If dependency install fails, use Python 3.11 or 3.12.
+[ready] Start YOLO pose service ws://127.0.0.1:8765
+[ready] WebSocket: ws://127.0.0.1:8765
+YOLO11n-pose summary (fused): 109 layers, 2,866,468 parameters, 0 gradients, 7.4 GFLOPs

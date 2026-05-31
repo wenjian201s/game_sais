@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>压力小人 - 体感解压 UI 原型</title>
+    <link rel="stylesheet" href="styles.css?v=20260531-comic5" />
+  </head>
+  <body>
+    <div class="app-shell" data-screen="intro">
+      <header class="topbar">
+        <button class="brand" data-go="intro" type="button" aria-label="返回开场">
+          <span class="brand-mark">SP</span>
+          <span>压力小人</span>
+        </button>
+        <nav class="main-nav" aria-label="主导航">
+          <button class="nav-btn active" data-go="setup" type="button">开打</button>
+          <button class="nav-btn" data-go="museum" type="button">标本馆</button>
+          <button class="nav-btn" data-go="medals" type="button">勋章墙</button>
+        </nav>
+        <div class="streak" title="连续解压天数">
+          <span class="dot"></span>
+          <span>连击打卡 7 天</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="screen intro-screen is-active" data-view="intro" aria-labelledby="intro-title">
+          <div class="intro-bg" aria-hidden="true">
+            <span>烦</span>
+            <span>改</span>
+            <span>KPI</span>
+            <span>Deadline</span>
+          </div>
+          <div class="intro-copy">
+            <p class="eyebrow">体感解压小游戏</p>
+            <h1 id="intro-title">压力小人</h1>
+            <div class="line-reveal">
+              <span>今天，是不是又被气到了？</span>
+              <span>有些人不能真打。</span>
+              <span>但在这里，可以把压力打散。</span>
+            </div>
+            <button class="primary-action" data-go="setup" type="button">
+              <span>30 秒内开打</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
+          <div class="intro-stage" aria-label="两个压力小人形象预览">
+            <div class="intro-card intro-card-left">
+              <div class="avatar-wrap small">
+                <div class="stress-avatar avatar-gold" data-expression="smirk">
+                  <div class="ear ear-left"></div>
+                  <div class="ear ear-right"></div>
+                  <div class="hair hair-gold"></div>
+                  <div class="head">
+                    <span class="brow brow-left"></span>
+                    <span class="brow brow-right"></span>
+                    <span class="eye eye-left"></span>
+                    <span class="eye eye-right"></span>
+                    <span class="nose"></span>
+                    <span class="mouth"></span>
+                    <span class="beard"></span>
+                  </div>
+                  <div class="body">
+                    <span class="paw paw-left"></span>
+                    <span class="paw paw-right"></span>
+                    <span class="leg leg-left"></span>
+                    <span class="leg leg-right"></span>
+                  </div>
+                </div>
+              </div>
+              <span class="comic-tag">欠揍指数 98%</span>
+            </div>
+            <div class="intro-card intro-card-right">
+              <div class="avatar-wrap small">
+                <div class="stress-avatar avatar-dark" data-expression="calm">
+                  <div class="ear ear-left"></div>
+                  <div class="ear ear-right"></div>
+                  <div class="hair hair-dark"></div>
+                  <div class="head">
+                    <span class="brow brow-left"></span>
+                    <span class="brow brow-right"></span>
+                    <span class="eye eye-left"></span>
+                    <span class="eye eye-right"></span>
+                    <span class="nose"></span>
+                    <span class="mouth"></span>
+                    <span class="cheek cheek-left"></span>
+                    <span class="cheek cheek-right"></span>
+                  </div>
+                  <div class="body">
+                    <span class="paw paw-left"></span>
+                    <span class="paw paw-right"></span>
+                    <span class="leg leg-left"></span>
+                    <span class="leg leg-right"></span>
+                  </div>
+                </div>
+              </div>
+              <span class="comic-tag yellow">嘴硬指数 91%</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen setup-screen" data-view="setup" aria-labelledby="setup-title">
+          <div class="section-head">
+            <p class="eyebrow">01 · 一句话生成压力小人</p>
+            <h2 id="setup-title">把今天的烦恼变成一个可以打的对象</h2>
+          </div>
+          <div class="setup-grid">
+            <form class="setup-panel" id="setupForm">
+              <label class="field-label" for="stressInput">今天最想打散什么？</label>
+              <textarea id="stressInput" rows="4" maxlength="36" placeholder="例如：第 8 版方案怪、明天交作业怪、又改需求怪"></textarea>
+              <div class="chip-row" aria-label="快捷输入">
+                <button class="chip" type="button" data-stress="第 8 版方案怪">第 8 版方案怪</button>
+                <button class="chip" type="button" data-stress="明天交作业怪">明天交作业怪</button>
+                <button class="chip" type="button" data-stress="KPI 压迫怪">KPI 压迫怪</button>
+                <button class="chip" type="button" data-stress="别急马上要怪">别急马上要怪</button>
+              </div>
+
+              <fieldset class="fieldset">
+                <legend>选择小人形象</legend>
+                <div class="role-picker">
+                  <label class="role-card selected" data-role-card="gold">
+                    <input type="radio" name="role" value="gold" checked />
+                    <span class="mini-face gold-face"></span>
+                    <span>
+                      <strong>金发挑眉怪</strong>
+                      <small>技能：翻白眼、阴阳怪气</small>
+                    </span>
+                  </label>
+                  <label class="role-card" data-role-card="dark">
+                    <input type="radio" name="role" value="dark" />
+                    <span class="mini-face dark-face"></span>
+                    <span>
+                      <strong>黑发冷脸怪</strong>
+                      <small>技能：沉默凝视、精神攻击</small>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend>选择场景</legend>
+                <div class="scene-strip" id="sceneStrip">
+                  <button class="scene-card selected" type="button" data-scene="office">办公室</button>
+                  <button class="scene-card" type="button" data-scene="classroom">教室</button>
+                  <button class="scene-card" type="button" data-scene="subway">地铁</button>
+                  <button class="scene-card" type="button" data-scene="ring">拳击场</button>
+                  <button class="scene-card" type="button" data-scene="elevator">电梯间</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend>选择玩法</legend>
+                <div class="mode-strip" id="modeStrip">
+                  <button class="mode-card selected" type="button" data-mode="boxing">体感拳击</button>
+                  <button class="mode-card" type="button" data-mode="slap">扇巴掌</button>
+                </div>
+              </fieldset>
+
+              <button class="primary-action wide" type="submit">
+                <span>生成并进入手势教学</span>
+                <span class="arrow">→</span>
+              </button>
+            </form>
+
+            <aside class="preview-panel">
+              <div class="comic-window">
+                <div class="comic-noise"></div>
+                <p class="taunt-bubble" id="previewTaunt">再改一版呗？</p>
+                <div class="avatar-wrap preview">
+                  <div class="stress-avatar avatar-gold" id="previewAvatar" data-expression="smirk">
+                    <div class="ear ear-left"></div>
+                    <div class="ear ear-right"></div>
+                    <div class="hair hair-gold"></div>
+                    <div class="head">
+                      <span class="brow brow-left"></span>
+                      <span class="brow brow-right"></span>
+                      <span class="eye eye-left"></span>
+                      <span class="eye eye-right"></span>
+                      <span class="nose"></span>
+                      <span class="mouth"></span>
+                      <span class="beard"></span>
+                      <span class="cheek cheek-left"></span>
+                      <span class="cheek cheek-right"></span>
+                    </div>
+                    <div class="body">
+                      <span class="paw paw-left"></span>
+                      <span class="paw paw-right"></span>
+                      <span class="leg leg-left"></span>
+                      <span class="leg leg-right"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="nameplate">
+                  <strong id="monsterName">第 8 版方案怪</strong>
+                  <span id="monsterType">办公室 · AI 嘲讽生成</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="screen tutorial-screen" data-view="tutorial" aria-labelledby="tutorial-title">
+          <div class="section-head compact">
+            <p class="eyebrow">02 · 手势教学</p>
+            <h2 id="tutorial-title">做完 3 个动作，就能开打</h2>
+          </div>
+          <div class="tutorial-grid">
+            <div class="camera-card">
+              <div class="camera-frame">
+                <video id="cameraPreview" playsinline muted></video>
+                <canvas id="tutorialPoseCanvas" aria-hidden="true"></canvas>
+                <div class="pose-lines" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p id="cameraStatus">摄像头画面仅用于本地姿态识别</p>
+              </div>
+              <button class="secondary-action" id="cameraBtn" type="button">开启摄像头预览</button>
+            </div>
+            <div class="gesture-list" id="gestureList">
+              <button class="gesture-item active" type="button" data-gesture-step="0">
+                <span class="gesture-icon">↔</span>
+                <span>
+                  <strong>左右晃动</strong>
+                  <small>躲开小人的压力爆冲</small>
+                </span>
+                <em>识别中</em>
+              </button>
+              <button class="gesture-item" type="button" data-gesture-step="1">
+                <span class="gesture-icon">→</span>
+                <span>
+                  <strong>直拳前冲</strong>
+                  <small>触发「直击灵魂」</small>
+                </span>
+                <em>待练习</em>
+              </button>
+              <button class="gesture-item" type="button" data-gesture-step="2">
+                <span class="gesture-icon">✚</span>
+                <span>
+                  <strong>双手合十</strong>
+                  <small>触发姿结大招「慈悲超度」</small>
+                </span>
+                <em>待练习</em>
+              </button>
+            </div>
+          </div>
+          <div class="tutorial-actions">
+            <button class="secondary-action" id="practiceBtn" type="button">模拟识别成功</button>
+            <button class="primary-action" id="startBattleBtn" type="button" disabled>
+              <span>进入战斗</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="screen battle-screen" data-view="battle" aria-labelledby="battle-title">
+          <h2 class="sr-only" id="battle-title">战斗主界面</h2>
+          <div class="battle-cabinet" id="battleCabinet">
+            <div class="real-game-shell" id="realGameShell">
+              <div class="real-game-top">
+                <div>
+                  <span class="real-game-kicker">真实体感战斗</span>
+                  <strong id="realGameTitle">第 8 版方案怪</strong>
+                </div>
+                <div class="real-game-actions">
+                  <button class="secondary-action" id="reloadGameBtn" type="button">重新载入战斗</button>
+                  <button class="secondary-action" id="exitGameBtn" type="button">返回生成</button>
+                </div>
+              </div>
+              <iframe
+                id="gameFrame"
+                class="game-frame"
+                title="压力小人体感战斗"
+                src="about:blank"
+                allow="camera; microphone; autoplay; clipboard-write"
+              ></iframe>
+            </div>
+            <div class="battle-hud">
+              <div class="hud-card player-card">
+                <div class="fighter-line">
+                  <span class="portrait-icon">我</span>
+                  <div>
+                    <strong>我 <small>LV.30</small></strong>
+                    <span>爆压斗士 A</span>
+                  </div>
+                </div>
+                <div class="hud-label">
+                  <span>HP</span>
+                  <strong id="playerHpText">100%</strong>
+                </div>
+                <div class="bar red"><span id="playerHpBar"></span></div>
+                <div class="hud-label energy-label">
+                  <span>能量</span>
+                  <strong id="energyText">100%</strong>
+                </div>
+                <div class="bar yellow"><span id="energyBar"></span></div>
+              </div>
+              <div class="hud-center">
+                <span id="sceneText">办公室</span>
+                <strong id="timerText">02:30</strong>
+                <span>ON AIR</span>
+              </div>
+              <div class="hud-card enemy-card">
+                <div class="fighter-line enemy-line">
+                  <span class="portrait-icon enemy">压</span>
+                  <div>
+                    <strong id="enemyNameText">第 8 版方案怪</strong>
+                    <span>PRESSURE LV.99</span>
+                  </div>
+                </div>
+                <div class="hud-label">
+                  <span>压力</span>
+                  <strong id="enemyHpText">100%</strong>
+                </div>
+                <div class="bar red"><span id="enemyHpBar"></span></div>
+              </div>
+            </div>
+
+            <div class="arena" id="arena">
+              <div class="arena-scene" id="arenaScene" aria-hidden="true"></div>
+              <div class="speed-lines" aria-hidden="true"></div>
+              <div class="camera-badge">
+                <span class="live-dot"></span>
+                <span>LIVE</span>
+              </div>
+              <div class="mission-note">今日限定：打倒烦恼</div>
+              <div class="rating-stars" aria-label="战斗评级">
+                <span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="combo-badge">
+                <strong id="comboText">X0</strong>
+                <span>连击</span>
+              </div>
+              <div class="damage-stamp">反打！</div>
+              <div class="warning" id="warning">小人要反击了，快躲！</div>
+              <div class="taunt-bubble battle-taunt" id="battleTaunt">再改一版呗？</div>
+              <div class="hit-word" id="hitWord">嘭！</div>
+              <div class="beam-effect" id="beamEffect"></div>
+              <div class="fist fist-left" aria-hidden="true">
+                <span class="finger f1"></span>
+                <span class="finger f2"></span>
+                <span class="finger f3"></span>
+                <span class="finger f4"></span>
+                <span class="thumb"></span>
+                <span class="wrist"></span>
+              </div>
+              <div class="fist fist-right" aria-hidden="true">
+                <span class="finger f1"></span>
+                <span class="finger f2"></span>
+                <span class="finger f3"></span>
+                <span class="finger f4"></span>
+                <span class="thumb"></span>
+                <span class="wrist"></span>
+              </div>
+              <div class="avatar-wrap battle-target" id="targetHitbox" role="button" tabindex="0" aria-label="点击或按技能攻击压力小人">
+                <div class="stress-avatar avatar-gold" id="battleAvatar" data-expression="smirk">
+                  <div class="ear ear-left"></div>
+                  <div class="ear ear-right"></div>
+                  <div class="hair hair-gold"></div>
+                  <div class="head">
+                    <span class="brow brow-left"></span>
+                    <span class="brow brow-right"></span>
+                    <span class="eye eye-left"></span>
+                    <span class="eye eye-right"></span>
+                    <span class="nose"></span>
+                    <span class="mouth"></span>
+                    <span class="beard"></span>
+                    <span class="cheek cheek-left"></span>
+                    <span class="cheek cheek-right"></span>
+                  </div>
+                  <div class="body">
+                    <span class="paw paw-left"></span>
+                    <span class="paw paw-right"></span>
+                    <span class="leg leg-left"></span>
+                    <span class="leg leg-right"></span>
+                  </div>
+                </div>
+                <button class="role-swap role-swap-left" data-battle-role="dark" type="button" aria-label="切换为黑发压力小人">黑</button>
+                <button class="role-swap role-swap-right" data-battle-role="gold" type="button" aria-label="切换为金发压力小人">金</button>
+              </div>
+            </div>
+
+            <div class="skill-dock">
+              <button class="skill-btn" type="button" data-skill="hook">
+                <kbd>A</kbd>
+                <span class="skill-icon fist-icon"></span>
+                <strong>左勾拳</strong>
+                <small>消耗 8</small>
+              </button>
+              <button class="skill-btn" type="button" data-skill="push">
+                <kbd>S</kbd>
+                <span class="skill-icon arrow-icon">→</span>
+                <strong>右勾拳</strong>
+                <small>消耗 8</small>
+              </button>
+              <button class="skill-btn" type="button" data-skill="soul">
+                <kbd>D</kbd>
+                <span class="skill-icon fist-icon"></span>
+                <strong>直拳</strong>
+                <small>消耗 12</small>
+              </button>
+              <button class="skill-btn" type="button" data-skill="slap">
+                <kbd>F</kbd>
+                <span class="skill-icon palm-icon"></span>
+                <strong>左边巴掌</strong>
+                <small>消耗 8</small>
+              </button>
+              <button class="skill-btn" type="button" data-skill="mercy">
+                <kbd>G</kbd>
+                <span class="skill-icon palm-icon"></span>
+                <strong>右边巴掌</strong>
+                <small>大招 60</small>
+              </button>
+              <button class="skill-btn locked" type="button" disabled>
+                <span class="question">?</span>
+                <strong>技能待定</strong>
+                <small>解锁中</small>
+              </button>
+            </div>
+
+            <div class="dodge-row">
+              <button class="secondary-action" type="button" data-dodge="left">左闪</button>
+              <button class="secondary-action" type="button" data-dodge="right">右闪</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen result-screen" data-view="result" aria-labelledby="result-title">
+          <div class="result-hero">
+            <div class="score-badge" id="scoreBadge">S</div>
+            <div>
+              <p class="eyebrow">07 · 结算</p>
+              <h2 id="result-title">压力已被打散</h2>
+              <p id="resultCopy">今天打得很狠，心情好一点了吗？</p>
+            </div>
+          </div>
+          <div class="result-grid">
+            <div class="report-card">
+              <div class="report-preview">
+                <span class="report-title" id="reportTitle">打倒了第 8 版方案怪</span>
+                <span class="report-hit">暴击高光 3s</span>
+                <div class="report-avatar" id="reportAvatar">
+                  <img id="reportAvatarImage" alt="" />
+                </div>
+              </div>
+              <div class="share-copy" id="shareCopy">压力释放 S 级，我把今天的 KPI 打爆了，你也来试试 →</div>
+            </div>
+            <div class="stats-card">
+              <div><span>命中次数</span><strong id="statHits">0</strong></div>
+              <div><span>最高连击</span><strong id="statCombo">0</strong></div>
+              <div><span>受到攻击</span><strong id="statDamage">0</strong></div>
+              <div><span>解压率</span><strong id="statRelease">67%</strong></div>
+            </div>
+          </div>
+          <div class="result-actions">
+            <button class="primary-action" data-restart type="button">不服？再来一局</button>
+            <button class="secondary-action" data-go="museum" type="button">查看压力标本馆</button>
+            <button class="secondary-action" id="copyReportBtn" type="button">复制战报文案</button>
+          </div>
+        </section>
+
+        <section class="screen museum-screen" data-view="museum" aria-labelledby="museum-title">
+          <div class="section-head">
+            <p class="eyebrow">压力标本馆</p>
+            <h2 id="museum-title">你消灭过的烦恼，都会被挂在这里</h2>
+          </div>
+          <div class="museum-grid" id="museumGrid"></div>
+        </section>
+
+        <section class="screen medals-screen" data-view="medals" aria-labelledby="medals-title">
+          <div class="section-head">
+            <p class="eyebrow">成长与留存</p>
+            <h2 id="medals-title">勋章墙</h2>
+          </div>
+          <div class="medal-grid">
+            <div class="medal unlocked"><strong>初次出拳</strong><span>第一次打飞压力小人</span></div>
+            <div class="medal unlocked"><strong>班味清除者</strong><span>办公室场景完成胜利</span></div>
+            <div class="medal unlocked"><strong>慈悲超度者</strong><span>使用大招完成终结</span></div>
+            <div class="medal"><strong>一日三杀</strong><span>一天打倒 3 个不同压力怪</span></div>
+            <div class="medal"><strong>无伤通关</strong><span>一次未被击中完成战斗</span></div>
+            <div class="medal"><strong>标本收藏家</strong><span>压力标本馆收集满 50 个</span></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js?v=20260531-scene-bg"></script>
+  </body>
+</html>
