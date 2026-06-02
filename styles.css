@@ -582,12 +582,10 @@ textarea:focus {
   overflow: hidden;
   border: 3px solid #341511;
   border-radius: 8px;
-  background:
-    radial-gradient(ellipse at 50% 94%, rgba(33, 17, 15, 0.22) 0 24%, transparent 25%),
-    #fffaf1;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   box-shadow:
     inset 0 0 0 2px rgba(255, 255, 255, 0.44),
     3px 3px 0 rgba(33, 17, 15, 0.68);
@@ -659,7 +657,8 @@ textarea:focus {
   color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-color: transparent;
 }
 
 .role-swap-left {
@@ -2537,9 +2536,8 @@ textarea:focus {
   border: 2px solid var(--black);
   border-radius: 8px;
   background:
-    radial-gradient(ellipse at 50% 90%, rgba(33, 17, 15, 0.22) 0 20%, transparent 21%),
-    repeating-conic-gradient(from -8deg at 50% 48%, rgba(45, 23, 19, 0.08) 0 1.2deg, transparent 1.6deg 7deg),
-    #fffaf1;
+    radial-gradient(ellipse at 50% 90%, rgba(33, 17, 15, 0.18) 0 20%, transparent 21%),
+    repeating-conic-gradient(from -8deg at 50% 48%, rgba(45, 23, 19, 0.08) 0 1.2deg, transparent 1.6deg 7deg);
   box-shadow: inset 0 0 26px rgba(230, 51, 41, 0.14);
 }
 
